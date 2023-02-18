@@ -29,7 +29,7 @@ app.use(session(sess));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// app.use(express.static('public'));
+app.use(express.static('public'));
 
 const hbs = exphbs.create({});
 app.engine('handlebars', hbs.engine);
