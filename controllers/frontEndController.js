@@ -21,6 +21,10 @@ router.get("/signup", (request, response)=> {
     response.render("signup");
 })
 
+router.get("/dashboard", (request, response)=> {
+    response.render("dashboard");
+})
+
 router.get("/sessions", (request, response)=> {
     response.json(request.session);
 })
