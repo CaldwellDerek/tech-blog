@@ -1,4 +1,3 @@
-require("dotenv").config();
 const express = require("express");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
@@ -25,24 +24,18 @@ const sess = {
 };
 
 app.use(session(sess));
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
 app.use(express.static('public'));
 
 const hbs = exphbs.create({});
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-app.get("/sessions", (request, response)=> {
-    response.json(request.session);
-})
-
 app.use(allRoutes);
 
 sequelize.sync({ force: false }).then(()=>{
-    app.listen(PORT, ()=> {
-        console.log('App listening on PORT ' + PORT);
+    app.listen(PORT, ()=>{
+        console.log(`SERVER RUNNING - Listening on Port: ${PORT}`);
     });
 });

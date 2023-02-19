@@ -100,3 +100,33 @@ footer {
 .post-content {
     margin: 5px 10px;
 }
+
+/* Login Form -------------------------------------- */
+
+.mb-3 {
+    width: 500px;
+}
+
+.btn {
+    width: 150px;
+    margin-bottom: 30px;
+}
+
+.signup-link {
+    text-decoration: none;
+    color: black;
+}
+
+.signup-link:hover {
+    color: white;
+}
+
+#login-form {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+

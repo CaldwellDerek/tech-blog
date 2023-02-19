@@ -32,3 +32,8 @@ logoutListItem.append(logoutLink);
 // linkContainer.appendChild(dashboardListItem);
 linkContainer.appendChild(loginListItem);
 // linkContainer.appendChild(logoutListItem);
+
+loginLink.addEventListener("click", (e)=> {
+    e.preventDefault();
+    location.href="/login";
+})
