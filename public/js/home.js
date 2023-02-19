@@ -28,7 +28,7 @@ logoutLink.setAttribute("class", "logout");
 logoutLink.textContent="Logout";
 logoutListItem.append(logoutLink);
 
-linkContainer.appendChild(homeListItem);
-linkContainer.appendChild(dashboardListItem);
+// linkContainer.appendChild(homeListItem);
+// linkContainer.appendChild(dashboardListItem);
 linkContainer.appendChild(loginListItem);
-linkContainer.appendChild(logoutListItem);
+// linkContainer.appendChild(logoutListItem);
