@@ -17,6 +17,10 @@ router.get("/login", (request, response)=> {
     response.render("login");
 })
 
+router.get("/signup", (request, response)=> {
+    response.render("signup");
+})
+
 router.get("/sessions", (request, response)=> {
     response.json(request.session);
 })
