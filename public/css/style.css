@@ -25,6 +25,21 @@ header ul {
     margin-right: 40px;
 }
 
+header li {
+    display: inline;
+    margin: 0 10px;
+}
+
+header a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+}
+
+header a:hover {
+    color: white;
+}
+
 main {
     background-color: bisque;
     width: 100%;
