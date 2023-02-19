@@ -19,12 +19,12 @@ User.init({
     }
 }, {
     sequelize,
-    // hooks:{
-    //     beforeCreate:userObj=>{
-    //         userObj.password = bcrypt.hashSync(userObj.password,4);
-    //         return userObj;
-    //     }
-    // }
+    hooks:{
+        beforeCreate:userObj=>{
+            userObj.password = bcrypt.hashSync(userObj.password,4);
+            return userObj;
+        }
+    }
 });
 
 module.exports = User;
