@@ -3,7 +3,7 @@ const router = express.Router();
 const { User, Post } = require('../models');
 
 router.use("/", (request, response)=>{
-    response.send("Test");
+    response.send("test");
 })
 
 module.exports = router;
