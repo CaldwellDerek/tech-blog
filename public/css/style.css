@@ -105,7 +105,7 @@ footer {
     margin: 5px 10px;
 }
 
-/* Login Form -------------------------------------- */
+/* Login / Signup Form -------------------------------------- */
 
 .mb-3 {
     width: 500px;
@@ -125,7 +125,8 @@ footer {
     color: white;
 }
 
-#login-form {
+#login-form,
+#signup-form {
     margin-top: 100px;
     display: flex;
     flex-direction: column;

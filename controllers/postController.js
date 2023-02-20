@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { User, Post } = require('../models');
 
-router.use("/", async (request, response)=>{
+router.get("/", async (request, response)=>{
     try {
         const allPosts = await Post.findAll();
         if (allPosts){
