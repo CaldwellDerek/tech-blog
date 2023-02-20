@@ -23,6 +23,8 @@ router.post("/", async (request, response)=> {
             password: request.body.password
         });
         if (newUser){
+            request.session.userID = newUser.id;
+            request.session.username = newUser.username;
             response.status(200).json(newUser);
         } else {
             response.status(404).json({msg: "An error has occurred."});
