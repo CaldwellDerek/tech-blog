@@ -38,6 +38,7 @@ router.post("/", async (request, response)=> {
         const newPost = await Post.create({
             title: request.body.title,
             post: request.body.content,
+            author: request.session.username,
             user_id: request.session.userID
         })
         if (newPost){
