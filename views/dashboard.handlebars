@@ -5,11 +5,23 @@
   </div>
   <div class="mb-3">
     <label for="content" class="form-label">Content</label>
-    <textarea class="form-control" id="content" cols="30" rows="5"></textarea>
+    <textarea class="form-control" id="content" cols="30" rows="5" required></textarea>
   </div>
   <button type="submit" class="btn btn-primary login-btn">Submit Post</button>
 </form>
 
 <button type="button" class="new-post btn btn-primary login-btn">New Post</button>
+
+{{#each allPosts as |post|}}
+    <div class="post">
+        <div class="post-header">
+            <h3 class="post-title">{{post.title}}</h3>
+            <p class="post-author">Test Author</p>
+        </div>
+        <div class="post-body">
+            <p class="post-content">{{post.post}}</p>
+        </div>
+    </div>
+{{/each}}
 
 <script src="./js/dashboard.js"></script>

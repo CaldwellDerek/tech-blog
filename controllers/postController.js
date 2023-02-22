@@ -14,7 +14,7 @@ router.get("/", async (request, response)=>{
         console.log(error);
         response.status(500).json({msg: "An error occured."});
     }
-})
+});
 
 router.get("/user_posts", async (request, response)=> {
     try {
@@ -31,5 +31,23 @@ router.get("/user_posts", async (request, response)=> {
     } catch (error) {
         response.status(500).json({msg: "An error has occurred."});
     }
-})
+});
+
+router.post("/", async (request, response)=> {
+    try {
+        const newPost = await Post.create({
+            title: request.body.title,
+            post: request.body.content,
+            user_id: request.session.userID
+        })
+        if (newPost){
+            response.status(200).json(newPost);
+        } else {
+            response.status(404).json({msg: "An error has occurred."});
+        }
+    } catch (error) {
+        response.status(500).json({msg: "An error has occurred."});
+    }
+});
+
 module.exports = router;

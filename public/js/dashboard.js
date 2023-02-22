@@ -18,13 +18,41 @@ logoutListItem.append(logoutLink);
 linkContainer.appendChild(homeListItem);
 linkContainer.appendChild(logoutListItem);
 
-// Render previous posts
 document.querySelector(".new-post").addEventListener("click", (e)=> {
     e.preventDefault();
-    console.log("yup")
     document.querySelector("#new-post-form").style.display = "block";
 })
 
+document.querySelector("#new-post-form").addEventListener("submit", async (e)=>{
+    e.preventDefault();
+    title = document.querySelector("#title").value;
+    content = document.querySelector("#content").value;
+
+    if (!title && !content){
+        return window.alert("Please enter a value for both title and content.");
+    }
+
+    const postContent = {
+        title: title,
+        content: content
+    }
+
+    const newPost = await fetch("/api/posts/", {
+        method: "POST",
+        body: JSON.stringify(postContent),
+        headers: {
+            "Content-Type":"application/json"
+        }
+    });
+
+    if (newPost.ok){
+        location.href="/dashboard";
+    } else {
+        window.alert("An error has occurred, please try again.");
+    }
+
+    document.querySelector("#new-post-form").style.display = "none";
+})
 
 homeLink.addEventListener("click", (e)=> {
     e.preventDefault();

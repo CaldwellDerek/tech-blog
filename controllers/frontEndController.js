@@ -22,7 +22,19 @@ router.get("/signup", (request, response)=> {
 })
 
 router.get("/dashboard", (request, response)=> {
-    response.render("dashboard");
+    Post.findAll({
+        where: {
+            user_id: request.session.userID
+        }
+    }).then(postData => {
+        const hbsPosts = postData.map(post => post.toJSON());
+        response.render("dashboard", {
+            allPosts: hbsPosts
+        });
+    }).catch(error => {
+        console.log(error);
+    })
+    
 })
 
 router.get("/sessions", (request, response)=> {

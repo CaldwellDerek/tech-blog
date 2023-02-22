@@ -48,11 +48,11 @@ router.post("/login", async (request, response)=> {
             request.session.username = findUser.username;
             response.status(200).json(findUser);
         } else {
-            request.status(404).json({msg: "An error has occurred."});
+            response.status(404).json({msg: "An error has occurred."});
         }
     } catch (error){
         console.log(error);
-        request.status(500).json({msg: "An error has occurred."})
+        response.status(500).json({msg: "An error has occurred."})
     }
 })
 
