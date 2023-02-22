@@ -1,39 +1,98 @@
 const linkContainer = document.querySelector(".nav-links");
+const sessionStatus = async ()=> {
+    const response = await fetch("/sessions");
+    const session = await response.json();
+    if (session.username){
+        const dashboardListItem = document.createElement("li");
+        const dashboardLink = document.createElement("a");
+        dashboardLink.setAttribute("href", "#");
+        dashboardLink.setAttribute("class", "dashboard");
+        dashboardLink.textContent="Dashboard";
+        dashboardListItem.append(dashboardLink);
 
-const homeListItem = document.createElement("li");
-const homeLink = document.createElement("a");
-homeLink.setAttribute("href", "#");
-homeLink.setAttribute("class", "home");
-homeLink.textContent="Home";
-homeListItem.append(homeLink);
+        const logoutListItem = document.createElement("li");
+        const logoutLink = document.createElement("a");
+        logoutLink.setAttribute("href", "#");
+        logoutLink.setAttribute("class", "logout");
+        logoutLink.textContent="Logout";
+        logoutListItem.append(logoutLink);
 
-const dashboardListItem = document.createElement("li");
-const dashboardLink = document.createElement("a");
-dashboardLink.setAttribute("href", "#");
-dashboardLink.setAttribute("class", "dashboard");
-dashboardLink.textContent="Dashboard";
-dashboardListItem.append(dashboardLink);
+        linkContainer.appendChild(dashboardListItem);
+        linkContainer.appendChild(logoutListItem);  
+        
+        dashboardLink.addEventListener("click", (e)=> {
+            e.preventDefault();
+            location.href="/dashboard";
+        })
 
-const loginListItem = document.createElement("li");
-const loginLink = document.createElement("a");
-loginLink.setAttribute("href", "#");
-loginLink.setAttribute("class", "login");
-loginLink.textContent="Login";
-loginListItem.append(loginLink);
+        logoutLink.addEventListener("click", async (e)=> {
+            e.preventDefault();
 
-const logoutListItem = document.createElement("li");
-const logoutLink = document.createElement("a");
-logoutLink.setAttribute("href", "#");
-logoutLink.setAttribute("class", "logout");
-logoutLink.textContent="Logout";
-logoutListItem.append(logoutLink);
+            const logout = await fetch("/api/users/logout");
+
+            location.href="/login";
+        })
+    } else {
+        const loginListItem = document.createElement("li");
+        const loginLink = document.createElement("a");
+        loginLink.setAttribute("href", "#");
+        loginLink.setAttribute("class", "login");
+        loginLink.textContent="Login";
+        loginListItem.append(loginLink);
+
+        const signupListItem = document.createElement("li");
+        const signupLink = document.createElement("a");
+        signupLink.setAttribute("href", "#");
+        signupLink.setAttribute("class", "signup");
+        signupLink.textContent="Sign Up";
+        signupListItem.append(signupLink);
+
+        linkContainer.appendChild(loginListItem);
+        linkContainer.appendChild(signupListItem);
+
+        loginLink.addEventListener("click", (e)=> {
+            e.preventDefault();
+            location.href="/login";
+        })
+
+        signupLink.addEventListener("click", (e)=> {
+            e.preventDefault();
+            location.href="/signup";
+        })
+    }
+}
+
+sessionStatus();
+
+// const homeListItem = document.createElement("li");
+// const homeLink = document.createElement("a");
+// homeLink.setAttribute("href", "#");
+// homeLink.setAttribute("class", "home");
+// homeLink.textContent="Home";
+// homeListItem.append(homeLink);
+
+// const dashboardListItem = document.createElement("li");
+// const dashboardLink = document.createElement("a");
+// dashboardLink.setAttribute("href", "#");
+// dashboardLink.setAttribute("class", "dashboard");
+// dashboardLink.textContent="Dashboard";
+// dashboardListItem.append(dashboardLink);
+
+// const loginListItem = document.createElement("li");
+// const loginLink = document.createElement("a");
+// loginLink.setAttribute("href", "#");
+// loginLink.setAttribute("class", "login");
+// loginLink.textContent="Login";
+// loginListItem.append(loginLink);
+
+// const logoutListItem = document.createElement("li");
+// const logoutLink = document.createElement("a");
+// logoutLink.setAttribute("href", "#");
+// logoutLink.setAttribute("class", "logout");
+// logoutLink.textContent="Logout";
+// logoutListItem.append(logoutLink);
 
 // linkContainer.appendChild(homeListItem);
 // linkContainer.appendChild(dashboardListItem);
-linkContainer.appendChild(loginListItem);
+// linkContainer.appendChild(loginListItem);
 // linkContainer.appendChild(logoutListItem);
-
-loginLink.addEventListener("click", (e)=> {
-    e.preventDefault();
-    location.href="/login";
-})

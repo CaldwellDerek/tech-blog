@@ -31,26 +31,30 @@ router.get("/signup", (request, response)=> {
 })
 
 router.get("/dashboard", (request, response)=> {
-    Post.findAll({
-        where: {
-            user_id: request.session.userID
-        },
-        order: [
-            ["createdAt", "DESC"]
-        ]
-    }).then(postData => {
-        const hbsPosts = postData.map(post => post.toJSON());
-        for (let obj of hbsPosts){
-            let formattedDate = dayjs(obj.createdAt).format("YYYY/MM/DD");
-            obj.createdAt = formattedDate;
-        }
-        response.render("dashboard", {
-            allPosts: hbsPosts
-        });
-    }).catch(error => {
-        console.log(error);
-    })
-    
+    if (request.session.userID){
+        Post.findAll({
+            where: {
+                user_id: request.session.userID
+            },
+            order: [
+                ["createdAt", "DESC"]
+            ]
+        }).then(postData => {
+            const hbsPosts = postData.map(post => post.toJSON());
+            for (let obj of hbsPosts){
+                let formattedDate = dayjs(obj.createdAt).format("YYYY/MM/DD");
+                obj.createdAt = formattedDate;
+            }
+            response.render("dashboard", {
+                allPosts: hbsPosts
+            });
+        }).catch(error => {
+            console.log(error);
+        })
+        
+    } else {
+        response.render("login");
+    }
 })
 
 router.get("/sessions", (request, response)=> {
@@ -59,3 +63,6 @@ router.get("/sessions", (request, response)=> {
 
 
 module.exports = router;
+
+
+

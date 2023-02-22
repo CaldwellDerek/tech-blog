@@ -7,11 +7,24 @@ homeLink.setAttribute("class", "home");
 homeLink.textContent="Home";
 homeListItem.append(homeLink);
 
+const signupListItem = document.createElement("li");
+const signupLink = document.createElement("a");
+signupLink.setAttribute("href", "#");
+signupLink.setAttribute("class", "signup");
+signupLink.textContent="Sign Up";
+signupListItem.append(signupLink);
+
 linkContainer.appendChild(homeListItem);
+linkContainer.appendChild(signupListItem);
 
 homeLink.addEventListener("click", (e)=> {
     e.preventDefault();
     location.href="/";
+})
+
+signupLink.addEventListener("click", (e)=> {
+    e.preventDefault();
+    location.href="/signup";
 })
 
 document.querySelector(".signup-link").addEventListener("click", (e)=> {
