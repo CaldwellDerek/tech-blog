@@ -1,7 +1,6 @@
 // Link creation
-const linkContainer = document.querySelector(".nav-links");
-
-const sessionStatus = async ()=> {
+async function sessionStatus() {
+    const linkContainer = document.querySelector(".nav-links");
     const response = await fetch("/sessions");
     const session = await response.json();
     if (session.username){
