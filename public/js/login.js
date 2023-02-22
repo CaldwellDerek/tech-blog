@@ -14,6 +14,11 @@ homeLink.addEventListener("click", (e)=> {
     location.href="/";
 })
 
+document.querySelector(".signup-link").addEventListener("click", (e)=> {
+    e.preventDefault();
+    location.href="/signup";
+})
+
 document.querySelector("#login-form").addEventListener("submit", async (e)=> {
     e.preventDefault();
 
