@@ -134,5 +134,11 @@ footer {
     align-items: center;
 }
 
+#new-post-form {
+    border: 5px solid black;
+    margin-top: 15px;
+    padding: 10px 20px;
+    display: none;
+}
 
 

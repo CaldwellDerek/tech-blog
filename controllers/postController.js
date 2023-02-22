@@ -16,4 +16,20 @@ router.get("/", async (request, response)=>{
     }
 })
 
+router.get("/user_posts", async (request, response)=> {
+    try {
+        const userPosts = await Post.findAll({
+            where: {
+                user_id: request.session.userID
+            }
+        })
+        if (userPosts){
+            response.status(200).json(userPosts);
+        } else {
+            response.status(404).json({msg: "An error has occurred."});
+        }
+    } catch (error) {
+        response.status(500).json({msg: "An error has occurred."});
+    }
+})
 module.exports = router;
