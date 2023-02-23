@@ -1,3 +1,5 @@
+<h1>User Dashboard</h1>
+
 <form id="new-post-form">
   <div class="mb-3">
     <label for="title" class="form-label">Title</label>
@@ -13,7 +15,7 @@
 <button type="button" class="new-post btn btn-primary login-btn">New Post</button>
 
 {{#each allPosts as |post|}}
-    <div class="post">
+    <div class="post" data-id="{{post.id}}">
         <div class="post-header">
             <h3 class="post-title">{{post.title}}</h3>
             <p class="post-author">Posted by <strong>{{post.author}}</strong> on <strong>{{post.createdAt}}</strong></p>

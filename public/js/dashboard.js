@@ -76,3 +76,30 @@ document.querySelector("#new-post-form").addEventListener("submit", async (e)=>{
 
     document.querySelector("#new-post-form").style.display = "none";
 })
+
+document.querySelectorAll(".post").forEach(element => {
+    element.addEventListener("click", async (e) => {
+        e.preventDefault();
+        if (e.target.className === "post"){
+            const id = e.target.getAttribute("data-id")
+
+            deleteBody = {
+                id: id
+            }
+
+            if (window.confirm("Would you like to continue with deleting this post?")){
+                const deletePost = await fetch("/api/posts", {
+                    method: "DELETE",
+                    body: JSON.stringify(deleteBody),
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+                location.reload();
+            } else {
+                window.alert("No post deleted.");
+            }
+        }
+        
+    })
+})

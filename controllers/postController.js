@@ -52,4 +52,22 @@ router.post("/", async (request, response)=> {
     }
 });
 
+router.delete("/", async (request, response)=> {
+    try {
+        const removePost = await Post.destroy({
+            where: {
+                id: request.body.id
+            }
+        })
+        if (removePost){
+            response.status(200).json(removePost);
+        } else {
+            response.status(404).json({msg: "An error has occurred."});
+        }
+    } catch (error) {
+        response.status(500).json({msg: "An error has occurred."});
+    }
+});
+
+
 module.exports = router;
