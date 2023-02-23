@@ -16,7 +16,7 @@
 A Technical Blog site where users can share and chat about new and exciting information in tech.
 
 ## Installation
-No installation necessary, this website can be accessed via the following deployment:
+No installation necessary, this website can be accessed via the following deployment: https://uwtechblog.herokuapp.com/
 
 ## Usage
 Share and chat about exciting advancements in tech.
