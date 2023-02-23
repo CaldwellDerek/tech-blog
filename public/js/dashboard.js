@@ -83,7 +83,7 @@ document.querySelectorAll(".post").forEach(element => {
         if (e.target.className === "post"){
             const id = e.target.getAttribute("data-id")
 
-            deleteBody = {
+            const deleteBody = {
                 id: id
             }
 
@@ -96,8 +96,24 @@ document.querySelectorAll(".post").forEach(element => {
                     }
                 })
                 location.reload();
-            } else {
-                window.alert("No post deleted.");
+            }
+
+            const toUpdate = window.prompt("Would you like to update this post?");
+
+            const updateBody = {
+                id: id,
+                post: toUpdate
+            }
+
+            if (toUpdate){
+                const updatePost = await fetch("/api/posts", {
+                    method: "PUT",
+                    body: JSON.stringify(updateBody),
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                })
+                location.reload();
             }
         }
         

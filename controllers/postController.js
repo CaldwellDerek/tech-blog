@@ -52,6 +52,26 @@ router.post("/", async (request, response)=> {
     }
 });
 
+router.put("/", async (request, response)=> {
+    try {
+        const updatePost = await Post.update({
+            post: request.body.post
+        },
+        {
+            where: {
+                id: request.body.id
+            }
+        })
+        if (updatePost){
+            response.status(200).json(updatePost);
+        } else {
+            response.status(404).json({msg: "An error has occurred."});
+        }
+    } catch (error) {
+        response.status(500).json({msg: "An error has occurred."});
+    }
+});
+
 router.delete("/", async (request, response)=> {
     try {
         const removePost = await Post.destroy({
