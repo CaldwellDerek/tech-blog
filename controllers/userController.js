@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { User, Post } = require('../models');
+const { User, Post, Comment } = require('../models');
 const bcrypt = require("bcrypt");
 
 router.get("/", async (request, response)=>{
@@ -55,6 +55,7 @@ router.post("/login", async (request, response)=> {
         response.status(500).json({msg: "An error has occurred."})
     }
 })
+
 
 router.get("/logout", (request, response)=> {
     request.session.destroy();

@@ -67,7 +67,10 @@ sessionStatus();
 document.querySelectorAll(".post").forEach(element => {
     element.addEventListener("click", async (e) => {
         e.preventDefault();
-
+        if (e.target.className === "post"){
+            const id = e.target.getAttribute("data-id")
+            location.href=`/${id}`;
+        }
         
     })
 })
