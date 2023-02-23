@@ -53,4 +53,4 @@ Dashboard Page
 ![dashboard-page](./public/images/user-dashboard.jpg)
 
 Comment Page
-![comment-page](./public/images/comment-section.jpg
+![comment-page](./public/images/comment-section.jpg)
