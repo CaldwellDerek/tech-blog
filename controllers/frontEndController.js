@@ -67,6 +67,9 @@ router.get("/sessions", (request, response)=> {
 
 
 router.get("/:id", (request, response)=> {
+    if (!request.session.username){
+        response.render("login");
+    }
     Post.findOne({
         where: {
             id: request.params.id
