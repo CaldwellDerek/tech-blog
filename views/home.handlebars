@@ -1,13 +1,13 @@
 {{#each allPosts as |post|}}
-    <div class="post">
-        <div class="post-header">
-            <h3 class="post-title">{{post.title}}</h3>
-            <p class="post-author">Posted by <strong>{{post.author}}</strong> on <strong>{{post.createdAt}}</strong></p>
-        </div>
-        <div class="post-body">
-            <p class="post-content">{{post.post}}</p>
-        </div>
+<div class="post" data-id="{{post.id}}">
+    <div class="post-header">
+        <h3 class="post-title">{{post.title}}</h3>
+        <p class="post-author">Posted by <strong>{{post.author}}</strong> on <strong>{{post.createdAt}}</strong></p>
     </div>
+    <div class="post-body">
+        <p class="post-content">{{post.post}}</p>
+    </div>
+</div>
 {{/each}}
 
 <script src="./js/home.js"></script>

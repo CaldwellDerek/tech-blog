@@ -57,22 +57,41 @@ router.get("/dashboard", (request, response)=> {
     }
 })
 
+<<<<<<< HEAD
 router.get("/comment", (request, response)=> {
     Post.findOne({
         where: {
             id: request.body.id
+=======
+router.get("/:id", (request, response)=> {
+    Post.findOne({
+        where: {
+            id: request.params.id
+>>>>>>> e9731c5cb4565f5d00ff06c19ca6bd9470faea74
         }
     })
     .then(postData => {
         const hbsData = postData.toJSON();
+<<<<<<< HEAD
         hbsData.createdAt = dayjs(hbsData.createdAt).format("YYYY/MM/DD");
         response.send(hbsData);
+=======
+        let formattedDate = dayjs(postData.createdAt).format("YYYY/MM/DD");
+        hbsData.createdAt = formattedDate;
+        response.render("comments", {
+            userPost: hbsData
+        })
+>>>>>>> e9731c5cb4565f5d00ff06c19ca6bd9470faea74
     })
     .catch(error => {
         console.log(error);
     })
 })
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> e9731c5cb4565f5d00ff06c19ca6bd9470faea74
 router.get("/sessions", (request, response)=> {
     response.json(request.session);
 })

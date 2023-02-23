@@ -65,7 +65,7 @@ async function sessionStatus() {
 sessionStatus();
 
 document.querySelectorAll(".post").forEach(element => {
-    element.addEventListener("click", e => {
+    element.addEventListener("click", async (e) => {
         e.preventDefault();
 
         
