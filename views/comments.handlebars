@@ -17,13 +17,14 @@
 </form>
 
 {{#each comments as |comment|}}
-<div class="post" data-id="{{comment.id}}">
+<div class="post" data-id="{{comment.id}}" style="width:500px">
     <div class="post-header">
-        <p class="post-author">Commented by <strong>{{comment.author}}</strong> on <strong>{{comment.createdAt}}</strong></p>
+        <p class="post-author" style="margin-left:10px">Commented by <strong>{{comment.author}}</strong> on <strong>{{comment.createdAt}}</strong></p>
     </div>
     <div class="post-body">
         <p class="post-content">{{comment.comment}}</p>
     </div>
 </div>
 {{/each}}
+
 <script src="./js/comments.js"></script>
