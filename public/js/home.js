@@ -65,9 +65,11 @@ async function sessionStatus() {
 sessionStatus();
 
 document.querySelectorAll(".post").forEach(element => {
-    element.addEventListener("click", e => {
+    element.addEventListener("click", async (e) => {
         e.preventDefault();
-
-        console.log(e.target.getElementById("post-title"));
+        if (e.target.className === "post"){
+            const id = e.target.getAttribute("data-id");
+            const goToComments = await fetch(`/comments/${id}`);
+        }
     })
 })
