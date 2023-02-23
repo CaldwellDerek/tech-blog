@@ -57,6 +57,10 @@ router.get("/dashboard", (request, response)=> {
     }
 })
 
+router.get("/comments", (request,response)=> {
+    response.render("comments");
+})
+
 router.get("/sessions", (request, response)=> {
     response.json(request.session);
 })
@@ -69,11 +73,26 @@ router.get("/:id", (request, response)=> {
         }
     })
     .then(postData => {
-        const hbsData = postData.toJSON();
-        hbsData.createdAt = dayjs(hbsData.createdAt).format("YYYY/MM/DD");
-        response.render("comments", {
-            userPost: hbsData
-        });
+        const hbsPostData = postData.toJSON();
+        hbsPostData.createdAt = dayjs(hbsPostData.createdAt).format("YYYY/MM/DD");
+        Comment.findAll({
+            where: {
+                post_id: hbsPostData.id
+            },
+            order: [
+                ["createdAt", "DESC"]
+            ]
+        }).then(commentData => {
+            const hbsCommentData = commentData.map(comment => comment.toJSON());
+            for (let obj of hbsCommentData){
+                let formattedDate = dayjs(obj.createdAt).format("YYYY/MM/DD");
+                obj.createdAt = formattedDate;
+            }
+            response.render("comments", {
+                userPost: hbsPostData,
+                comments: hbsCommentData
+            })
+        })
     })
     .catch(error => {
         console.log(error);
