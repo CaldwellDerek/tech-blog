@@ -57,6 +57,22 @@ router.get("/dashboard", (request, response)=> {
     }
 })
 
+router.get("/comment", (request, response)=> {
+    Post.findOne({
+        where: {
+            id: request.body.id
+        }
+    })
+    .then(postData => {
+        const hbsData = postData.toJSON();
+        hbsData.createdAt = dayjs(hbsData.createdAt).format("YYYY/MM/DD");
+        response.send(hbsData);
+    })
+    .catch(error => {
+        console.log(error);
+    })
+})
+
 router.get("/sessions", (request, response)=> {
     response.json(request.session);
 })

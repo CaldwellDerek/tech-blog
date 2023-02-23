@@ -68,6 +68,6 @@ document.querySelectorAll(".post").forEach(element => {
     element.addEventListener("click", e => {
         e.preventDefault();
 
-        console.log(e.target.getElementById("post-title"));
+        
     })
 })
