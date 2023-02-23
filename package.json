@@ -4,7 +4,8 @@
   "description": "![LicenseBadge](https://img.shields.io/badge/License-MIT-blue)\r # Tech Blog",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
