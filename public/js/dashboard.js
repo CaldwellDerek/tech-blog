@@ -1,45 +1,34 @@
-// Link creation
-async function sessionStatus() {
-    const linkContainer = document.querySelector(".nav-links");
-    const response = await fetch("/sessions");
-    const session = await response.json();
-    if (session.username){
+const linkContainer = document.querySelector(".nav-links");
 
-        const homeListItem = document.createElement("li");
-        const homeLink = document.createElement("a");
-        homeLink.setAttribute("href", "#");
-        homeLink.setAttribute("class", "home");
-        homeLink.textContent="Home";
-        homeListItem.append(homeLink);
+const homeListItem = document.createElement("li");
+const homeLink = document.createElement("a");
+homeLink.setAttribute("href", "#");
+homeLink.setAttribute("class", "home");
+homeLink.textContent="Home";
+homeListItem.append(homeLink);
 
-        const logoutListItem = document.createElement("li");
-        const logoutLink = document.createElement("a");
-        logoutLink.setAttribute("href", "#");
-        logoutLink.setAttribute("class", "logout");
-        logoutLink.textContent="Logout";
-        logoutListItem.append(logoutLink);
+const logoutListItem = document.createElement("li");
+const logoutLink = document.createElement("a");
+logoutLink.setAttribute("href", "#");
+logoutLink.setAttribute("class", "logout");
+logoutLink.textContent="Logout";
+logoutListItem.append(logoutLink);
 
-        linkContainer.appendChild(homeListItem);
-        linkContainer.appendChild(logoutListItem);  
-        
-        homeLink.addEventListener("click", (e)=> {
-            e.preventDefault();
-            location.href="/";
-        })
+linkContainer.appendChild(homeListItem);
+linkContainer.appendChild(logoutListItem);  
 
-        logoutLink.addEventListener("click", async (e)=> {
-            e.preventDefault();
+homeLink.addEventListener("click", (e)=> {
+    e.preventDefault();
+    location.href="/";
+})
 
-            const logout = await fetch("/api/users/logout");
+logoutLink.addEventListener("click", async (e)=> {
+    e.preventDefault();
 
-            location.href="/login";
-        })
-    } else {
-        location.href="/login";
-    }
-}
-sessionStatus();
+    const logout = await fetch("/api/users/logout");
 
+    location.href="/login";
+})
 
 document.querySelector(".new-post").addEventListener("click", (e)=> {
     e.preventDefault();
